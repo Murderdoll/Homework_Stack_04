@@ -42,10 +42,9 @@ void stackEmpty()
 	//cout << endl << "Метод stackEmpty" << endl;
 	Stack<int> Ob4;
 	for (int i = 0; i < 10; i++)
-        {
+ {
 		Ob4.push(i);
-		i++;
-        }
+ }
 	while (Ob4.empty() == 0)
 	{
 		cout << Ob4.pop() << " ";
