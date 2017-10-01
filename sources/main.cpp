@@ -39,7 +39,7 @@ void stackPop()
 
 void stackEmpty()
 {
-	//cout << endl << "Метод stackEmpty" << endl;
+	cout << endl << "Метод stackEmpty" << endl;
 	Stack<int> Ob4;
 	for (int i = 0; i < 10; i++)
  {
