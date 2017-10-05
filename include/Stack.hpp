@@ -71,7 +71,12 @@ public:
 	}
 	bool empty() const
 	{
-		return count() == 0;
+		if (count() == 0)
+		{
+			return true;
+		}
+		else
+			return false;
 	}
 };
 
