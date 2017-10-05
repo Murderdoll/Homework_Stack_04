@@ -49,7 +49,6 @@ public:
 		if (count_ == 0) //проверяем размер стека
 			throw runtime_error("Stack Empty!");
 		count_--;
-		array_[count_] = NULL;
 		return array_[count_];
 	}
 	// Данная функция вызывается при переполнении стека. В ней происходит переразпределение памяти
