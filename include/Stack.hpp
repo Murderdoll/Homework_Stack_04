@@ -80,9 +80,4 @@ public:
 	}
 };
 
-void stackInit();
-void stackPush();
-void stackPop();
-void stackEmpty();
-
 #endif /* STACK_HPP */
