@@ -69,12 +69,7 @@ public:
 	}
 	bool empty() const
 	{
-		if (count() == 0)
-		{
-			return true;
-		}
-		else
-			return false;
+		return count();
 	}
 };
 
