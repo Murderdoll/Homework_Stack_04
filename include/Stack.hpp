@@ -67,25 +67,25 @@ public:
 		s.array_ = nullptr;
 		return *this;
 	};
-	~Stack<T>()
+	~Stack<T>() noexcept
 	{
                 delete[] array_; 
         }
 	
 
-	 T& operator [](int pos) 
+	 T& operator [](int pos) noexcept
 	 {
     	        return array_[pos];
          }
 	
 	// функция, показывающая существующие значения в объекте
-	void showMe(size_t i)
+	void showMe(size_t i) noexcept
 	{
 		cout << array_[i];
 	}
 
 	// функция, добавляющая значения в стек, и проверяющая номер элемента с вершиной стека на переполнение стека(push -добавляем наверх)
-	void push(T const &d)
+	void push(T const &d) noexcept
 	{
 		if (count_ == array_size_)
 			StackDuplication();
@@ -105,7 +105,7 @@ public:
 		return top();
 	};
 	// Данная функция вызывается при переполнении стека. В ней происходит переразпределение памяти
-	void StackDuplication() // Данная функция вызывается при переполнении стека. В ней происходит переразпределение памяти
+	void StackDuplication() noexcept // Данная функция вызывается при переполнении стека. В ней происходит переразпределение памяти
 	{
 		T* array_2 = new T[array_size_ * 2]; // Определеям указатель array_2 на новый массив с уввеличенным размером 
 		for (int i = 0; i < array_size_; i++)// Переносим в новый массив элементы из старого
@@ -116,11 +116,11 @@ public:
 		delete[] array_;// освобождаем память
 		array_ = array_2;//переопределяем указатель
 	}
-	size_t count() const // const потому что метод ничего не изменяет
+	size_t count() const noexcept // const потому что метод ничего не изменяет
 	{ 
 		return count_;
 	}
-	bool empty() const
+	bool empty() const noexcept
 	{
 		return count();
 	}
