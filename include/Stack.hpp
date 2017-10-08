@@ -15,10 +15,57 @@ private:
 	size_t array_size_; // размер стека
 
 public:
-	Stack() : array_size_{10}, array_{new T[array_size_]}
-	{} //
-	Stack(size_t s) : array_size_(s) , array_(new T[s])
-	{}
+	Stack() noexcept : array_size_(size_t(10)), array_(new T[10]) //Конструктор класса без параметров
+	{}; 
+	Stack(size_t st) noexcept: array_size_(st), array_(new T[st]) //Конструктор класса с параметром
+	{};
+	Stack(const Stack& s) noexcept //Конструктор копирования
+	{
+		if (this != &s)
+		{
+			delete[] array_;
+			array_size_ = s.array_size_;
+			count_ = s.count_;
+			array_ = new T[s.array_size_];
+			for (size_t i = 0; i < s.array_size_; ++i)
+			{
+				array_[i] = s.array_[i];
+			}
+		}
+	};
+	Stack(Stack&& s) noexcept //Конструктор перемещения
+	{
+		array_size_ = s.array_size_;
+		count_ = s.count_;
+		array_ = s.array_;
+		s.array_size_ = 0;
+		s.count_ = 0;
+		s.array_ = nullptr;
+	};
+	Stack<T>& operator=(const Stack& s) noexcept //Оператор присваивания с семантикой копирования
+	{
+		if (this == &s) { return *this; }
+		else {
+			delete[] array_;
+			array_size_ = s.array_size_;
+			count_ = s.count_;
+			array_ = new T[s.array_size_];
+			for (size_t i = 0; i < s.array_size_; ++i) {
+				array_[i] = s.array_[i];
+			}
+			return *this;
+		}
+	};
+	Stack<T>& operator=(Stack&& s) noexcept //Оператор присваивания с семантикой перемещения
+	{
+		array_size_ = s.array_size_;
+		count_ = s.count_;
+		array_ = s.array_;
+		s.array_size_ = 0;
+		s.count_ = 0;
+		s.array_ = nullptr;
+		return *this;
+	};
 	~Stack<T>()
 	{
                 delete[] array_; 
