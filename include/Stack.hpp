@@ -20,18 +20,15 @@ public:
 	{}; 
 	Stack(size_t st) noexcept: array_size_(st), array_(new T[st]) //Конструктор класса с параметром
 	{};
-	Stack(const Stack& s) noexcept //Конструктор копирования
+	Stack(const Stack& s) noexcept // Конструктор копирования
 	{
-		if (this != &s)
+		delete[] array_;
+		array_size_ = s.array_size_;
+		count_ = s.count_;
+		array_ = new T[s.array_size_];
+		for (size_t i = 0; i < s.count_; ++i)
 		{
-			delete[] array_;
-			array_size_ = s.array_size_;
-			count_ = s.count_;
-			array_ = new T[s.array_size_];
-			for (size_t i = 0; i < s.array_size_; ++i)
-			{
-				array_[i] = s.array_[i];
-			}
+			array_[i] = s.array_[i];
 		}
 	};
 	Stack(Stack&& s) noexcept //Конструктор перемещения
