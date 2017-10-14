@@ -92,14 +92,14 @@ public:
 	T top() const noexcept
 	{
 		return array_[count_];
-	}
-	T pop() noexcept {
-		if (count_ == 0)
+	};
+	void pop() noexcept
+	{
+		if (count_ == 0) 
 		{
-			throw runtime_error("Stack is empty!!!"); // генерируем исключение
+			throw runtime_error("Stack is empty!!!"); //Пуск исключения
 		}
 		--count_; //Снижение счетчика на единицу
-		return top();
 	};
 	// Данная функция вызывается при переполнении стека. В ней происходит переразпределение памяти
 	void StackDuplication() noexcept // Данная функция вызывается при переполнении стека. В ней происходит переразпределение памяти
