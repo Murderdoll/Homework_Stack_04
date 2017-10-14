@@ -122,7 +122,10 @@ public:
 	}
 	bool empty() const noexcept
 	{
-		return count();
+		if (count() == 0)
+			return true;
+		else
+		return false;
 	}
 };
 
