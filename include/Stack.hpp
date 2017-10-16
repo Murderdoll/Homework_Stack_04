@@ -40,6 +40,10 @@ public:
 		s.count_ = 0;
 		s.array_ = nullptr;
 	};
+	Stack(initializer_list<T> l) noexcept:  array_size_{ l.size() }, count_{ l.size() }, array_{ new T[array_size_] }
+	{
+		copy(l.begin(), l.end(), array_);
+	};
 	Stack<T>& operator=(const Stack& s) noexcept //Оператор присваивания с семантикой копирования
 	{
 		if (this == &s) { return *this; }
